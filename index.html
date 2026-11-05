@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <!-- شاشة تسجيل الدخول -->
+<div id="login-screen" class="screen active">
+    <div class="login-card">
+        <div class="logo-icon">🔬</div>
+        <h2>المخبر الافتراضي الذكي</h2>
+        <p>قم بتسجيل الدخول للوصول إلى أدوات الفيزياء والكيمياء ثلاثية الأبعاد</p>
+        <form id="login-form">
+            <div class="input-group">
+                <input type="text" id="username" placeholder="اسم المستخدم (مثال: student)" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="كلمة المرور (مثال: 1234)" required>
+            </div>
+            <button type="submit" class="btn-primary">دخول إلى المخبر</button>
+        </form>
+    </div>
+</div>
+
+<!-- واجهة المخبر الرئيسية -->
+<div id="lab-screen" class="screen">
+    <header class="lab-header">
+        <div class="header-title">
+            <span>⚗️</span>
+            <h1>المخبر العلمي الافتراضي</h1>
+        </div>
+        <div class="user-info">
+            <span id="display-user">مرحباً بك</span>
+            <button id="logout-btn" class="btn-secondary">خروج</button>
+        </div>
+    </header>
+
+    <nav class="lab-nav">
+        <button class="tab-btn active" data-tab="physics">الفيزياء (حقول وميكانيكا 3D)</button>
+        <button class="tab-btn" data-tab="chemistry">الكيمياء (أدوات وسوائل)</button>
+        <button class="tab-btn" data-tab="models">نماذج لويس وجيلسبي</button>
+    </nav>
+
+    <main class="lab-content">
+        <!-- قسم الفيزياء -->
+        <section id="physics" class="tab-pane active">
+            <h2>محاكي الفيزياء والميكانيكا الحركية</h2>
+            <div class="controls-panel">
+                <button id="start-physics" class="btn-action">تشغيل محاكاة الطاقة والحركة</button>
+                <button id="reset-physics" class="btn-action-alt">إعادة تعيين</button>
+            </div>
+            <div class="canvas-container">
+                <canvas id="physics-canvas"></canvas>
+            </div>
+        </section>
+
+        <!-- قسم الكيمياء -->
+        <section id="chemistry" class="tab-pane">
+            <h2>مختبر الكيمياء والتفاعلات الزجاجية</h2>
+            <div class="chem-controls">
+                <div class="input-group-inline">
+                    <label>اكتب المادة الكيميائية:</label>
+                    <input type="text" id="chem-input" placeholder="مثال: حمض الكبريتيك، كبريتات النحاس، ماء...">
+                </div>
+                <button id="pour-btn" class="btn-action">سكب السائل في الكأس</button>
+            </div>
+            <div class="lab-bench">
+                <div class="glassware-rack">
+                    <div class="flask" id="beaker">
+                        <div class="liquid" id="beaker-liquid"></div>
+                        <span class="flask-label">كأس زجاجي</span>
+                    </div>
+                    <div class="pipette" id="pipette">
+                        <div class="pipette-liquid"></div>
+                        <span class="flask-label">أنبوب ماص</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم نماذج لويس وجيلسبي -->
+        <section id="models" class="tab-pane">
+            <h2>منشئ نماذج لويس وهندسة الجزيئات (VSEPR - جيلسبي)</h2>
+            <div class="model-controls">
+                <select id="molecule-select">
+                    <option value="H2O">ماء (H2O) - زاوي</option>
+                    <option value="CO2">ثاني أكسيد الكربون (CO2) - خطي</option>
+                    <option value="CH4">ميثان (CH4) - هرم رباعي الوجوه</option>
+                    <option value="NH3">نشادر (NH3) - هرم ثلاثي</option>
+                </select>
+                <button id="generate-model" class="btn-action">إنشاء النموذج 3D</button>
+            </div>
+            <div class="canvas-container">
+                <canvas id="model-canvas"></canvas>
+            </div>
+        </section>
+    </main>
+</div>
+
+    <script src="/script.js"></script>
+  </body>
+
+</html>
